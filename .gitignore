@@ -1,0 +1,14 @@
+# Credentials
+credentials.yaml
+.streamlit/secrets.toml
+
+# Models & Data
+models/*.pkl
+/app/data/raw/
+/app/data/processed/
+/app/data/latest/
+
+# Logs
+*.log
+/app/__pycache__/
+*.pyc
