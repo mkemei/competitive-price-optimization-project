@@ -104,14 +104,4 @@ Our comparative analysis identified XGBoost as the superior architecture for Ken
 
 ```
 
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-**Developed for IT Thesis Research - 2026**
-
-```
-
 ```
