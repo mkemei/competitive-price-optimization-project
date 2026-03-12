@@ -1,6 +1,7 @@
-# DaPri: XGBoost Price Optimization Platform 🇰🇪
+```markdown
+# XGBoost Price Optimization Platform 🇰🇪
 
-DaPri is an intelligent price optimization system designed specifically for Kenyan retail SMEs. It utilizes an **XGBoost Gradient Boosting** regressor to predict demand elasticity and prescribes optimal price points to maximize revenue while maintaining competitive market positioning.
+This is an intelligent price optimization system designed specifically for Kenyan retail SMEs. It utilizes an **XGBoost Gradient Boosting** regressor to predict demand elasticity and prescribes optimal price points to maximize revenue while maintaining competitive market positioning.
 
 ## 🚀 Key Features
 * **Predictive Demand Modeling:** Achievement of **0.93 R²** and **2.66% MAPE** using XGBoost.
@@ -11,7 +12,7 @@ DaPri is an intelligent price optimization system designed specifically for Keny
 
 ## 🏗️ System Architecture
 
-##Dummy ReadMe to be updated
+The system follows a four-tier decoupled architecture to ensure sub-second inference performance.
 
 ```mermaid
 %%{init: {"flowchart": {"curve": "step"}}}%%
@@ -36,3 +37,66 @@ flowchart TB
 
     Scraper & POS --> Ingest --> DS
     DS --> FE --> XGB --> OPT --> UI
+
+```
+
+## 🛠️ Installation & Setup
+
+### 1. Prerequisites
+
+* Python 3.9+
+* Virtual Environment (venv or conda)
+
+### 2. Clone and Install
+
+```bash
+git clone [https://github.com/your-repo/dapri-price-optimizer.git](https://github.com/your-repo/dapri-price-optimizer.git)
+cd dapri-price-optimizer
+pip install -r requirements.txt
+
+```
+
+### 3. Run the Application
+
+```bash
+streamlit run app.py
+
+```
+
+## 📊 Model Performance
+
+Our comparative analysis identified XGBoost as the superior architecture for Kenyan retail datasets obtained from Kaggle:
+
+| Model | R² | MAPE | MAE |
+| --- | --- | --- | --- |
+| **XGBoost** | **0.93** | **2.66%** | **0.07** |
+| Random Forest | 0.85 | 10.71% | 0.19 |
+| LSTM | 0.88 | 71.04% | 0.29 |
+
+## 📂 Project Structure
+
+```text
+├── app/
+├── dashboards/
+├── data/                   # Raw and processed datasets
+├── models/                 # Serialized .pkl (XGBoost, Scalers, Encoders)
+├── src/
+│   ├── scraper.py          # Shopify API integration
+│   ├── feature_eng.py  
+│   ├── preprocessing.py 
+│   ├── best_model.py # Lags and Competitor Ratios
+│   └── optimizer.py        # Revenue optimization logic
+├── streamlit_app.py                  # Main Streamlit application
+└── requirements.txt        # Project dependencies
+
+```
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+**Developed for IT Thesis Research - 2026**
+
+```
