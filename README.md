@@ -63,7 +63,7 @@ OPT --> UI
 
 ```bash
 git clone https://github.com/mkemei/competitive-price-optimization-project.git
-cd competitive-price-optimization-project.git
+cd competitive-price-optimization-project
 pip install -r requirements.txt
 ```
 
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 ## 3. Run the Application
 
 ```bash
-streamlit run app/dashboard.py
+streamlit run app/streamlit_app.py
 ```
 
 ---
@@ -111,7 +111,7 @@ price-optimization-platform/
 │   └── utils.py
 │
 ├── app/
-│   └── dashboard.py
+│   └── streamlit_app.py
 │
 ├── notebooks/
 │   └── exploratory_analysis.ipynb
