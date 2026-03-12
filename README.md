@@ -1,5 +1,3 @@
----
-
 ```markdown
 # XGBoost Price Optimization Platform 🇰🇪
 
