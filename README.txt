@@ -1,4 +1,3 @@
-```markdown
 # XGBoost Price Optimization Platform 🇰🇪
 
 This is an intelligent price optimization system designed specifically for Kenyan retail SMEs. It utilizes an **XGBoost Gradient Boosting** regressor to predict demand elasticity and prescribes optimal price points to maximize revenue while maintaining competitive market positioning.
@@ -100,3 +99,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Developed for IT Thesis Research - 2026**
 
 ```
+
