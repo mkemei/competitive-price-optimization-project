@@ -62,8 +62,8 @@ OPT --> UI
 ## 2. Clone and Install
 
 ```bash
-git clone https://github.com/your-repo/dapri-price-optimizer.git
-cd dapri-price-optimizer
+git clone https://github.com/mkemei/competitive-price-optimization-project.git
+cd competitive-price-optimization-project.git
 pip install -r requirements.txt
 ```
 
