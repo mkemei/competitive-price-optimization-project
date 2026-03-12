@@ -76,14 +76,31 @@ Our comparative analysis identified XGBoost as the superior architecture for Ken
 ## 📂 Project Structure
 
 ```text
-├── data/                   # Raw and processed datasets
-├── models/                 # Serialized .pkl (XGBoost, Scalers, Encoders)
+│
+├── data/
+│   ├── raw_sales.csv
+│   ├── competitor_prices.csv
+│   └── processed_data.csv
+│
+├── models/
+│   └── trained_model.pkl
+│
 ├── src/
-│   ├── scraper.py          # Shopify API integration
-│   ├── feature_eng.py      # Lags and Competitor Ratios
-│   └── optimizer.py        # Revenue optimization logic
-├── app.py                  # Main Streamlit application
-└── requirements.txt        # Project dependencies
+│   ├── data_ingestion.py
+│   ├── feature_eng.py
+│   ├── train_model.py
+│   ├── demand_prediction.py
+│   ├── price_optimizer.py
+│   └── utils.py
+│
+├── app/
+│   └── dashboard.py
+│
+├── notebooks/
+│   └── exploratory_analysis.ipynb
+│
+├── requirements.txt
+└── README.md
 
 ```
 
