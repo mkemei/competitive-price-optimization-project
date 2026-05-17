@@ -1,14 +1,14 @@
 # XGBoost Price Optimization Platform
 
-This is an intelligent price optimization system designed specifically for Kenyan retail SMEs. It utilizes an **XGBoost Gradient Boosting** regressor to predict demand elasticity and prescribes optimal price points to maximize revenue while maintaining competitive market positioning.
+This is an intelligent price optimization system designed specifically for Kenyan retail SMEs. It utilizes an **Random Forest** regressor to predict demand elasticity and prescribes optimal price points to maximize revenue while maintaining competitive market positioning.
 
 ---
 
 # 🚀 Key Features
 
-* **Predictive Demand Modeling:** Achievement of **0.93 R²** and **2.66% MAPE** using XGBoost.
-* **Automated Competitor Tracking:** Integrates with Shopify-based retail APIs to monitor live prices.
-* **Grid-Search Optimization:** Simulates thousands of price scenarios to find the revenue-maximizing point.
+* **Predictive Demand Modeling:** Achievement of **0.75²** and **5.90% RMSE** using XGBoost.
+* **Automated Competitor Tracking:** Integrates with Shopify-based retail APIs and HTML based scraping to momitor product prices.
+* **Scipy Optimization:** Simulates thousands of price scenarios to find the revenue-maximizing point.
 * **Admin Dashboard:** Includes Model Explainability (SHAP), performance monitoring (MAE/RMSE), and RBAC management.
 * **Streamlit UI:** An intuitive interface for retail managers to manage inventory pricing.
 
@@ -180,11 +180,12 @@ Sales Data + Competitor Prices
      Feature Engineering
             │
             ▼
-      XGBoost Model
+      RandomForest Model
       (Demand Prediction)
             │
             ▼
       Price Optimization
+      (Scipy Optimize)
             │
             ▼
       Streamlit Dashboard
@@ -196,8 +197,9 @@ Sales Data + Competitor Prices
 
 * **Python**
 * **Pandas / NumPy**
-* **XGBoost**
+* **RandomForest**
 * **Streamlit**
+* **Scipy Minimize**
 * **SHAP (Model Explainability)**
 * **Scikit-learn**
 
