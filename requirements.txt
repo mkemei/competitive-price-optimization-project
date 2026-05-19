@@ -6,4 +6,8 @@ pandas
 pyyaml
 joblib
 shap
-
+holidays>=0.40   
+matplotlib>=3.5.0 
+pytz
+scipy>=1.10.0  
+numpy>=1.22.0
