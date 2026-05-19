@@ -11,3 +11,9 @@ matplotlib>=3.5.0
 pytz
 scipy>=1.10.0  
 numpy>=1.22.0
+lightgbm
+seaborn
+requests
+beautifulsoup4
+rapidfuzz
+bcrypt
