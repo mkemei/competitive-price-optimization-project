@@ -21,6 +21,7 @@ def prepare_weekly_data(df_original):
    
     # 1. Ensure correct types
     df['date'] = pd.to_datetime(df['date'])
+    
 
     # 2. Standardize to Weekly (Mondays)
     df['week_start'] = df['date'].dt.to_period('W').dt.start_time
@@ -147,7 +148,7 @@ def run_training_pipeline():
     search = RandomizedSearchCV(
     estimator=RandomForestRegressor(random_state=42),
     param_distributions=rf_param_dist,
-    n_iter=30, 
+    n_iter=50, 
     cv=tscv, 
     scoring='neg_mean_absolute_error', 
     n_jobs=-1, 
