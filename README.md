@@ -1,4 +1,4 @@
-# XGBoost Price Optimization Platform
+# Price Optimization Platform
 
 This is an intelligent price optimization system designed specifically for Kenyan retail SMEs. It utilizes an **Random Forest** regressor to predict demand elasticity and prescribes optimal price points to maximize revenue while maintaining competitive market positioning.
 
