@@ -64,7 +64,6 @@ class PriceOptimizerDefault:
             'rolling_mean_net_quantity_4w': weekly_hist['net_quantity'].tail(4).mean() if not weekly_hist.empty else 0,
             'rolling_median_net_quantity_4w': weekly_hist['net_quantity'].tail(4).median() if not weekly_hist.empty else 0,
             'price_vs_avg_ratio': float(target_price) / (historical_avg_price + 1e-6),
-           # 'discount_percentage': 0
         }
 
         return pd.DataFrame([row])

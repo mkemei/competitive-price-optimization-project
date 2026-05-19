@@ -252,6 +252,52 @@ def render_user_dashboard():
     optimizer = load_optimizer()
     competitor_df = load_latest_competitor_data()
 
+# =====================================================================
+    # ADDED FEATURE: Sidebar Business Constraints Configurations
+    # =====================================================================
+    st.sidebar.header("🛡️ Price Bounds")
+    #st.sidebar.markdown("Modify operational margins and boundary boxes for the SciPy optimization calculations below:")
+    
+    conf_max_discount = st.sidebar.slider(
+        "Max Allowed Discount", 
+        min_value=0.0, max_value=0.50, value=0.20, step=0.05, format="%.2f",
+        help="Sets maximum percentage discount allowed off the current store price."
+    )
+    conf_max_premium = st.sidebar.slider(
+        "Max Allowed Premium", 
+        min_value=0.0, max_value=0.50, value=0.30, step=0.05, format="%.2f",
+        help="Sets maximum percentage premium markup allowed over the current store price."
+    )
+    conf_min_current_price_pct = st.sidebar.slider(
+        "Historical Floor Warning Boundary", 
+        min_value=0.50, max_value=0.90, value=0.70, step=0.05, format="%.2f",
+        help="Threshold percentage used to identify and flag unreasonable inputs relative to historical averages."
+    )
+    
+    st.sidebar.markdown("---")
+
+    # UPDATED FEATURE: Market Simulation Controls successfully integrated into the sidebar layout
+    st.sidebar.subheader("🔧 Market Simulation Controls")
+    with st.sidebar.expander("📊 Elasticity Overlay Adjustments", expanded=False):
+        sim_elasticity = st.slider(
+            "Own-Price Elasticity Override (α)", 
+            min_value=0.0, max_value=3.0, value=0.0, step=0.1,
+            help="0.0 relies purely on Random Forest features. Values > 0.0 mathematically penalize high pricing."
+        )
+        sim_comp_elasticity = st.slider(
+            "Competitor Cross Elasticity (β)", 
+            min_value=0.0, max_value=3.0, value=0.0, step=0.1,
+            help="Values > 0.0 shift consumer demand dynamically based on the competitor price gap."
+        )
+
+    # Commit all sidebar variables directly into the active configuration state block
+    optimizer.config['max_discount'] = conf_max_discount
+    optimizer.config['max_premium'] = conf_max_premium
+    optimizer.config['min_current_price_pct'] = conf_min_current_price_pct
+    optimizer.config['elasticity'] = sim_elasticity
+    optimizer.config['comp_elasticity'] = sim_comp_elasticity
+
+    # =====================================================================
     st.divider()
 
     # Product Selection
@@ -283,35 +329,6 @@ def render_user_dashboard():
         comp_match = competitor_df[competitor_df['matched_user_product_original'] == product] if competitor_df is not None else pd.DataFrame()
         c_min = float(comp_match['comp_min_price'].iloc[0]) if not comp_match.empty else current_price
         adj_comp_min = st.number_input("📉 Competitor Min Price (KES)", value=c_min, step=10.0)
-
-    # =====================================================================
-    # ADDED FEATURE: Economic Parameter Simulation Control Interface
-    # =====================================================================
-    st.markdown("### 🔧 Market Simulation Controls")
-    with st.expander("📊 Elasticity Overlay Adjustments (Presentation Simulation Mode)", expanded=False):
-        st.info("Manually overlay extra log-linear price sensitivity parameters to simulate severe economic fluctuations.")
-        
-        sim_elasticity = st.slider(
-            "Own-Price Elasticity Override (α)", 
-            min_value=0.0, 
-            max_value=3.0, 
-            value=0.0, 
-            step=0.1,
-            help="0.0 relies purely on Random Forest features. Values > 0.0 mathematically penalize high pricing."
-        )
-        sim_comp_elasticity = st.slider(
-            "Competitor Cross-Price Elasticity Override (β)", 
-            min_value=0.0, 
-            max_value=3.0, 
-            value=0.0, 
-            step=0.1,
-            help="Values > 0.0 shift consumer demand dynamically based on the competitor price gap."
-        )
-
-    # Direct implementation update mapping straight into the backend configuration memory layer
-    optimizer.config['elasticity'] = sim_elasticity
-    optimizer.config['comp_elasticity'] = sim_comp_elasticity
-    # =====================================================================
 
     # OPTIMIZE BUTTON
     if st.button("🧠 CALCULATE OPTIMAL PRICE"):
